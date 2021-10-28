@@ -1,0 +1,24 @@
+.eventosMouse{
+    text-align: center;
+}
+
+.eventosMouse .ex1{
+    width: 460px;
+    padding: 20px;
+    background: #1e90ff;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+.eventosMouse p, .eventosMouse input{
+    width: 480px;
+    padding: 5px;
+    background: #000;
+    margin: 10px auto;
+    text-align: center;
+    color: #fff;
+    border: 5px solid #ccc;
+    font-size: 14px;
+}
