@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                console.log("DOM CARREGADO");
+                /*
+                $('h1').css("color", "#f66");
+
+                $('h1').hide();
+                $('h1').delay('1000'); //Entre um efeito e outro
+                $('h1').fadeIn("slow");
+                $("h1").text("Curso JQuery");
+                */
+
+                //Usando efeitos inline
+                $('h1')
+                .css("color", "#f66")
+                .hide()
+                .delay('1000')
+                .fadeIn("slow")
+                .text("Curso JQuery")
+                .click(() => {
+                    $("body").css("background", "#C30");
+                    $("h1").css({color: 'white', fontSize: '14px', 'margin-left': '10px'});
+                    $("body a:nth-child(2)").fadeOut(3000)
+                })
+
+                //Seletores avançados CSS
+
+                //Primeiro elemento após p1 - NO MESMO NÍVEL
+                $(".p1+p").css({'font-size': '25px'});
+
+                //Todos elementos após o primeiro P de DIV2 - NO MESMO NÍVEL
+                $(".div2>p:first-child~p").css({color: "red"});
+            });
+
+            //Mais demorado
+            $(window).on('load',function(){
+                console.log("ELEMENTOS CARREGADOS");
+
+                $("a").text("Link Modificado");
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Título</h1>
+
+        <a href="#">Link 1</a>
+        <a class="link2" href="#" id="">Link 2</a>
+        <a href="#" id="link3">Link 3</a>
+
+        <div class="div1">
+            <h2>H2 filho da DIV1</h2>
+            <p>P filho de DIV1 <span>SPAN filho de P da DIV1</span></p>
+            <span>SPAN filho de DIV1</span>
+        </div>
+
+        <h2>H2 fora de DIV1</h2>
+        <p class="p1">P1 fora de DIV1</p>
+        <p>P2 fora de DIV1</p>
+
+        <div class="div2">
+            <p>P1 em DIV2</p>
+            <p>P2 em DIV2</p>
+            <p>P3 em DIV2</p>
+            <p>P4 em DIV2</p>
+        </div>
+        
+        <p>P3 fora de DIV1</p>
+
+        <footer>
+            <img src="http://joaquimnery.files.wordpress.com/2012/07/dsc_0569.jpg" style="width: 100px;">
+        </footer>
+        
+    </body>
+</html>
