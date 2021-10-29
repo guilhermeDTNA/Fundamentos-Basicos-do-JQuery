@@ -1,15 +1,13 @@
-.eventosMouse{
+.eventos{
+    margin-top: 30px;
+}
+
+.eventos .ex1{
     text-align: center;
 }
 
-.eventosMouse .ex1{
-    width: 460px;
-    padding: 20px;
-    background: #1e90ff;
-    margin: 0 auto;
+.eventosMouse{
     text-align: center;
-    color: #fff;
-    font-size: 14px;
 }
 
 .eventosMouse p, .eventosMouse input{
@@ -21,4 +19,41 @@
     color: #fff;
     border: 5px solid #ccc;
     font-size: 14px;
+}
+
+.ex1{
+    width: 460px;
+    padding: 20px;
+    background: #1e90ff;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+.eventosTeclado label, .eventosFormulario label{
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background: #F8F8FF;
+}
+
+.eventosTeclado, .eventosFormulario{
+    text-align: center;
+}
+
+.eventosTeclado input, .eventosTeclado textarea, .eventosFormulario input, .eventosFormulario textarea{
+    padding: 5px;
+    width: 450px;
+}
+
+.eventosTeclado button, .eventosFormulario button{
+    width: 465px;
+}
+
+.buttons{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
 }

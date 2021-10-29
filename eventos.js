@@ -19,9 +19,8 @@ $(function(){
 
     $(window).scroll(() => {
         var topo = $(window).scrollTop();
-        console.log(topo);
 
-        if(topo >= 400){
+        if(topo >= 1000){
             $("img.correct").fadeOut("slow");
         } else{
             $("img.correct").fadeIn("slow");
@@ -31,19 +30,19 @@ $(function(){
 
 //Eventos de mouse
 $(function(){
-    var ex = $(".ex1");
+    var ex = $(".eventos .ex1");
 
-    $(".ev1").click(function(){
+    $(".eventosMouse .ev1").click(function(){
         $(this).css("background", "#ccc");
         ex.text("Você clicou!");
     });
 
-    $(".ev2").dblclick(function(){
+    $(".eventosMouse .ev2").dblclick(function(){
         $(this).css("background", "#ccc");
         ex.text("Você clicou duas vezes!");
     });
 
-    $(".ev3").focusin(function(){
+    $(".eventosMouse .ev3").focusin(function(){
         $(this).css("background", "#ccc");
         ex.text("Você focou!");
     }).focusout(function(){
@@ -51,12 +50,12 @@ $(function(){
         ex.text("Você tirou o foco!");
     });
 
-    $(".ev4").hover(function(){
+    $(".eventosMouse .ev4").hover(function(){
         $(this).css("background", "#ccc");
         ex.text("Você passou o mouse!");
     });
 
-    $(".ev5").mousedown(function(){
+    $(".eventosMouse .ev5").mousedown(function(){
         $(this).css("background", "#ccc");
         ex.text("Você clicou segurando!");
     }).mouseup(function(){
@@ -65,7 +64,7 @@ $(function(){
     });
 
     let a=0;
-    $(".ev6").mouseenter(function(){ //mouseenter só funciona no elemento, não em seus filhos
+    $(".eventosMouse .ev6").mouseenter(function(){ //mouseenter só funciona no elemento, não em seus filhos
         a+=1;
         ex.text("Número de entradas do mouse (mouseenter): "+a);
     }).mouseout(function(){
@@ -73,18 +72,101 @@ $(function(){
     })
 
     let b=0;
-    $(".ev7").mouseover(function(){ //mouseover funciona em todos os filhos do elemento
+    $(".eventosMouse .ev7").mouseover(function(){ //mouseover funciona em todos os filhos do elemento
         b+=1;
         ex.text("Número de entradas do mouse (mouseover): "+b);
     }).mouseleave(function(){
         ex.text("Saiu com o mouse (mouseleave)");
     });
 
-    $(".ev8").mousemove(function(event){
+    $(".eventosMouse .ev8").mousemove(function(event){
         let localx = event.pageX;
         let localy = event.pageY;
 
         ex.text("Movimento X: "+localx+" - Movimento Y: "+localy);
     });
+
+    $(".eventosMouse .ev9").click(function(){
+        ex.hide(500); //meio segundo (display: none)
+    });
+
+    $(".eventosMouse .ev10").click(function(){
+        ex.show(500);
+    });
     
+    $(".eventosMouse .ev11").click(function(){
+        ex.toggle(500); //alterna entre esconder e exibir;
+    });
+
+    $(".eventosMouse .ev12").keyup(function(){
+        let texto = $(this).val();
+
+        if(texto == "hide"){
+            ex.hide('slow');
+        } else if(texto == "show"){
+            ex.show('slow');
+        } else if(texto == "toggle"){
+            ex.toggle('slow');
+        }
+    });
+});
+
+//Eventos de teclado
+$(function(){
+    $(".place").each(function(){
+        var place = $(this).attr("title");
+        var input = $(this);
+
+        input
+        .val(place)
+        .css({color: '#ccc'})
+        .focusin(function(){
+            input.css({color: '#000'});
+            if(input.val() == place){
+                input.val('');
+            }
+        })
+        .focusout(function(){
+            if(input.val() == ""){
+                input.val(place);
+                input.css({color: '#ccc'});
+            }
+        })
+    });
+
+    let ex = $(".ex1");
+
+    $(".key").keyup(function(){
+        ex.text($(this).val());
+    });
+});
+
+//Eventos de formulários
+$(function(){
+    let ex = $(".ex1");
+
+    $(".eventosFormulario .ev1").focus(function(){
+        ex.text($(this).attr("title"));
+    }).keyup(function(){
+        if($(this).val() == "pontocom"){
+            $(".eventosFormulario .ev2").focus();
+        }
+    });
+
+    //Saída do campo
+    $(".eventosFormulario .ev1").blur(function(){
+        ex.text("Saída do campo: "+$(this).attr("name"));
+    });
+
+    //Pega alteração ao sair do campo
+    $(".eventosFormulario .ev2").change(function(){
+        ex.text("Campo alterado: "+$(this).val());
+    });
+
+    $(".eventosFormulario .selecionar").click(function(){
+        $(".eventosFormulario .ev3").select(); //Seleciona todo o texto de um elemento
+        $("form").submit(() => { //Não deixa o form enviar informações
+            return false;
+        })
+    });
 });
