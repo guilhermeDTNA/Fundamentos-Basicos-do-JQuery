@@ -170,3 +170,31 @@ $(function(){
         })
     });
 });
+
+//Eventos de desvaecimento
+$(function(){
+    let ex = $(".ex1");
+    let button = $(":button"); //pega o atributo
+
+    button.click(function(){
+        ex.fadeOut(4000);
+    }).dblclick(function(){
+        ex.fadeIn(4000);
+    });
+
+    let fadeTo = $(".opacity").click(function(){
+        ex.fadeTo(4000, 0.5); //tempo e opacidade
+    }).dblclick(function(){
+        ex.fadeTo(4000, 1);
+    });
+
+    let fadeToggle = $(".efeitosDesvanecer .toggle").click(function(){
+        ex.fadeToggle(4000);
+    });
+
+    let callback = $(".efeitosDesvanecer .callback").click(function(){
+        ex.fadeTo(4000, 0.3, function(){
+            ex.fadeTo(4000, 1);
+        });
+    })
+});
